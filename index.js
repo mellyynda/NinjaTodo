@@ -1,5 +1,5 @@
 const addForm = document.querySelector('.add');
-const listContainer = document.querySelector('.list-group');
+const list = document.querySelector('.list-group');
 
 addForm.addEventListener('submit', e => {
     
@@ -22,12 +22,11 @@ function createTodo(todo) {
 </li>
     `;
 
-    listContainer.innerHTML += content;
+    list.innerHTML += content;
 }
 
 //delete todos
-
-listContainer.addEventListener('click', e => {
+list.addEventListener('click', e => {
     if (e.target.classList.contains('delete')) {
         e.target.parentElement.remove();
     }
