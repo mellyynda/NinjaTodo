@@ -1,5 +1,6 @@
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.list-group');
+const search = document.querySelector('.search input');
 
 addForm.addEventListener('submit', e => {
     
@@ -31,3 +32,21 @@ list.addEventListener('click', e => {
         e.target.parentElement.remove();
     }
 })
+
+//search todos
+search.addEventListener('keyup', () => {
+    const term = search.value.trim().toLowerCase();
+    renderSearched(term);
+})
+
+const renderSearched = (term) => {
+
+    Array.from(list.children)
+        .filter( child => !child.textContent.toLowerCase().includes(term))
+        .forEach( child => child.classList.add('hide'));
+
+    Array.from(list.children)
+        .filter( child => child.textContent.toLowerCase().includes(term))
+        .forEach( child => child.classList.remove('hide'));
+        
+}
