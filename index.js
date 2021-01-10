@@ -1,5 +1,6 @@
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.list-group');
+const search = document.querySelector('.search input');
 
 addForm.addEventListener('submit', e => {
     
@@ -15,14 +16,17 @@ addForm.addEventListener('submit', e => {
 
 function createTodo(todo) {
 
-    const content = `
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-    <span>${todo}</span>
-    <i class="far fa-trash-alt delete"></i>
-</li>
-    `;
+    const content = document.createElement('li');
 
-    list.innerHTML += content;
+    content.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+    
+    content.innerHTML = `
+        <span>${todo}</span>
+        <i class="far fa-trash-alt delete"></i>
+         `;
+
+    list.insertBefore(content, list.firstChild);
+    
 }
 
 //delete todos
@@ -31,3 +35,21 @@ list.addEventListener('click', e => {
         e.target.parentElement.remove();
     }
 })
+
+//search todos
+search.addEventListener('keyup', () => {
+    const term = search.value.trim().toLowerCase();
+    renderSearched(term);
+})
+
+const renderSearched = (term) => {
+
+    Array.from(list.children)
+        .filter( child => !child.textContent.toLowerCase().includes(term))
+        .forEach( child => child.classList.add('hide'));
+
+    Array.from(list.children)
+        .filter( child => child.textContent.toLowerCase().includes(term))
+        .forEach( child => child.classList.remove('hide'));
+        
+}
