@@ -16,14 +16,17 @@ addForm.addEventListener('submit', e => {
 
 function createTodo(todo) {
 
-    const content = `
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-    <span>${todo}</span>
-    <i class="far fa-trash-alt delete"></i>
-</li>
-    `;
+    const content = document.createElement('li');
 
-    list.innerHTML += content;
+    content.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+    
+    content.innerHTML = `
+        <span>${todo}</span>
+        <i class="far fa-trash-alt delete"></i>
+         `;
+
+    list.insertBefore(content, list.firstChild);
+    
 }
 
 //delete todos

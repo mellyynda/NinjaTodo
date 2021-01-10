@@ -33,4 +33,5 @@ input[type=text]:focus {
 .list-group {
     overflow: auto;
     width: 100%;
+    min-height: 70px;
 }
