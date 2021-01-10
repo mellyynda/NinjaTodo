@@ -4,6 +4,10 @@ body {
 
 .container {
     max-width: 400px;
+    max-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
 }
 
 input[type=text],
@@ -24,4 +28,9 @@ input[type=text]:focus {
 
 .hide {
     display: none !important;
+}
+
+.list-group {
+    overflow: auto;
+    width: 100%;
 }
