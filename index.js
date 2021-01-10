@@ -24,3 +24,11 @@ function createTodo(todo) {
 
     listContainer.innerHTML += content;
 }
+
+//delete todos
+
+listContainer.addEventListener('click', e => {
+    if (e.target.classList.contains('delete')) {
+        e.target.parentElement.remove();
+    }
+})
